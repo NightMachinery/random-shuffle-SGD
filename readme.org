@@ -1,0 +1,21 @@
+#+TITLE: random-shuffle-SGD
+
+* Experiments
+#+begin_example zsh
+# delete previous results
+command rm *.pt *.log  
+#+end_example
+
+#+begin_example zsh
+modes=(
+  shuffle_once
+  cyclic
+  shuffle_all
+  shuffle_all_replacement
+)
+
+for mode in "${modes[@]}" ; do
+    echo "Mode: $mode"
+    python rsgd.py --batch-size 1 --log-interval 10000 --epochs 16 --mode "$mode" --save-model auto
+done
+#+end_example
