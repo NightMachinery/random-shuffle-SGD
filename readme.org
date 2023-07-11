@@ -20,7 +20,7 @@ for bs in "${batch_sizes[@]}" ; do
     for mode in "${modes[@]}" ; do
         echo "mode=${mode}, batch_size=${bs}"
         
-        python rsgd.py --batch-size "${bs}" --log-interval 10000 --epochs 16 --mode "$mode" --save-model auto --prefix-path "./results/batch_size_${bs}/"
+        python rsgd.py --batch-size "${bs}" --log-interval 10000 --epochs 10 --mode "$mode" --save-model auto --prefix-path "./results/batch_size_${bs}/"
     done
 done
 #+end_example

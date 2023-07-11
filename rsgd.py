@@ -353,9 +353,11 @@ def main():
             save_path = f"{mode}"
 
         save_path_model = f"{prefix_path}{save_path}.pt"
-        save_path_log = f"{prefix_path}{save_path}.log"
+        os.makedirs(os.path.dirname(save_path_model), exist_ok=True)
 
-        os.makedirs(os.path.dirname(save_path), exist_ok=True)
+        save_path_log = f"{prefix_path}{save_path}.log"
+        os.makedirs(os.path.dirname(save_path_log), exist_ok=True)
+
         torch.save(model.state_dict(), save_path_model)
         print(f"Saved the model to: {save_path_model}")
         with open(save_path_log, "w") as f:
