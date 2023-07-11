@@ -350,7 +350,7 @@ def main():
     if args.save_model:
         save_path = args.save_model
         if save_path == "auto":
-            save_path = f"./{mode}"
+            save_path = f"{mode}"
 
         save_path_model = f"{prefix_path}{save_path}.pt"
         save_path_log = f"{prefix_path}{save_path}.log"
