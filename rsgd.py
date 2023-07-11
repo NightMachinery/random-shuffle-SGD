@@ -217,9 +217,9 @@ def main():
     parser.add_argument(
         "--lr",
         type=float,
-        default=1.0,
+        default=0.01,
         metavar="LR",
-        help="learning rate (default: 1.0)",
+        help="learning rate",
     )
     parser.add_argument(
         "--gamma",
@@ -334,7 +334,9 @@ def main():
     test_loader = torch.utils.data.DataLoader(dataset_test, **test_kwargs)
 
     model = Net().to(device)
-    optimizer = optim.Adadelta(model.parameters(), lr=args.lr)
+
+    # optimizer = optim.Adadelta(model.parameters(), lr=args.lr)
+    optimizer = optim.SGD(model.parameters(), lr=ic(args.lr))
 
     # scheduler = StepLR(optimizer, step_size=1, gamma=args.gamma)
     accuracies = []
