@@ -262,6 +262,12 @@ def main():
         default=None,
         help="Path to save the current model",
     )
+    parser.add_argument(
+        "--prefix-path",
+        action="store",
+        default=None,
+        help="Path to prepend to other paths",
+    )
 
     parser.add_argument(
         "--mode",
@@ -273,6 +279,8 @@ def main():
     args = parser.parse_args()
 
     mode = args.mode
+
+    prefix_path = args.prefix_path
 
     use_cuda = not args.no_cuda and torch.cuda.is_available()
     use_mps = not args.no_mps and torch.backends.mps.is_available()
@@ -344,8 +352,8 @@ def main():
         if save_path == "auto":
             save_path = f"./{mode}"
 
-        save_path_model = f"{save_path}.pt"
-        save_path_log = f"{save_path}.log"
+        save_path_model = f"{prefix_path}{save_path}.pt"
+        save_path_log = f"{prefix_path}{save_path}.log"
 
         os.makedirs(os.path.dirname(save_path), exist_ok=True)
         torch.save(model.state_dict(), save_path_model)
