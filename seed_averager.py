@@ -36,6 +36,7 @@ for bd in batch_dirs:
 
     print(f'\n----------------Batch Size {batch_size}-----------------\n')
 
+    alg_files.sort()
     # Group by algorithms
     alg_dict = {}
     for af in alg_files:
