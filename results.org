@@ -2,7 +2,7 @@
 
 This paper had no empirical results, so we designed a simple experiment on MNIST on its proposed algorithms.
 
-* batch size1
+* batch size 1
 #+begin_example json
 {
     "results": {
@@ -47,4 +47,7 @@ This paper had no empirical results, so we designed a simple experiment on MNIST
   ]
 }
 #+end_example
+
+* multiple seeds
+See [[./results_avg_summary.txt]].
 

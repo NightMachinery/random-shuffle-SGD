@@ -14,6 +14,7 @@ try:
     from icecream import ic, colorize as ic_colorize
 
     ic.configureOutput(outputFunction=lambda s: print(ic_colorize(s)))
+    # ic.configureOutput(outputFunction=lambda s: print(s))
 except ImportError:
     ic = lambda *a: None if not a else (a[0] if len(a) == 1 else a)
 

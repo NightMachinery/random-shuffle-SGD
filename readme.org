@@ -56,6 +56,6 @@ done
 #+end_example
 
 #+begin_example zsh
-python ./seed_averager.py
+python ./seed_averager.py | tee /dev/tty > results_avg_summary.txt
 #+end_example
 
