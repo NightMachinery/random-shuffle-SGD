@@ -2,6 +2,8 @@
 
 This paper had no empirical results, so we designed a simple experiment on MNIST on its proposed algorithms.
 
+Arrays like `[97.69, 97.75, 98.63, 98.12, 98.3, 98.58, 98.42, 98.67, 98.63, 98.43]` show the test accuracy of the model in different epochs.
+
 * batch size 1
 #+begin_example json
 {
