@@ -1,5 +1,9 @@
 #+TITLE: random-shuffle-SGD
 
+* Algorithms
+#+ATTR_HTML: :width 900
+[[file:readme.org_imgs/20230712_060555_UOdC4A.png]]
+
 * Experiments
 ** One Seed
 #+begin_example zsh
