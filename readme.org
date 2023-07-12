@@ -1,11 +1,7 @@
 #+TITLE: random-shuffle-SGD
 
 * Experiments
-#+begin_example zsh
-# delete previous results
-command rm *.pt *.log  
-#+end_example
-
+** One Seed
 #+begin_example zsh
 modes=(
   shuffle_once
@@ -23,5 +19,43 @@ for bs in "${batch_sizes[@]}" ; do
         python rsgd.py --batch-size "${bs}" --log-interval 10000 --epochs 10 --mode "$mode" --save-model auto --prefix-path "./results/batch_size_${bs}/"
     done
 done
+#+end_example
+
+** Different Seeds
+#+begin_example zsh
+seeds=(
+  1
+  2
+  3
+  4
+  5
+)
+
+modes=(
+  shuffle_once
+  cyclic
+  shuffle_all
+  shuffle_all_replacement
+)
+
+batch_sizes=(
+512
+# 64
+# 1
+)
+
+for bs in "${batch_sizes[@]}" ; do
+    for seed in "${seeds[@]}" ; do
+        for mode in "${modes[@]}" ; do
+            echo "mode=${mode}, batch_size=${bs}"
+
+            python rsgd.py --seed "$seed" --batch-size "${bs}" --lr 0.1 --log-interval 10000 --epochs 10 --mode "$mode" --save-model auto --prefix-path "./results/batch_size_${bs}/seed_${seed}/"
+        done
+    done
+done
+#+end_example
+
+#+begin_example zsh
+python ./seed_averager.py
 #+end_example
 
